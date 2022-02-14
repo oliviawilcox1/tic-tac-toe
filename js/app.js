@@ -1,7 +1,7 @@
 //gives a node list we need an array 
 const box = Array.from(document.querySelectorAll('.box'))
 const reset = document.querySelector('#reset')
-const statusMessage = document.querySelector('.status-message')
+const statusMessage = document.querySelector('.statusMessage')
 
 //let because the game will end/change the variable
 let gameRunning = true;
@@ -91,7 +91,7 @@ const checkForWin = () => {
             statusMessage.innerHTML = `Winner is ${firstPlayer}`
             console.log(statusMessage)
             gameRunning = false;
-            
+
              // cant do return because itll exit whole function;
             break;
            }   
