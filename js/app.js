@@ -10,7 +10,7 @@ let startGame = ["", "", "", "", "", "", "", "", ""];
 // let because the player will change
 let firstPlayer = 'X';
 
-statusMessage.innerHTML = `Player is ${firstPlayer}`
+statusMessage.textContent = `It is Player ${firstPlayer}'s turn!`
 
 
 
@@ -39,7 +39,7 @@ const whosTurn = () => {
     // statusMessage.classList.remove(`X`)
     firstPlayer = firstPlayer === 'X' ? 'O' : 'X';
     console.log(firstPlayer)
-    statusMessage.innerHTML = `Player is ${firstPlayer}`
+    statusMessage.textContent = `It is Player ${firstPlayer}'s turn!`
 }
 
 
@@ -60,7 +60,9 @@ const whosTurn = () => {
         // console.log(firstPlayer)
         updateBox(index);
         checkForWin();
+    if (gameRunning) {
         whosTurn();
+    }
          
     }
 }
@@ -88,17 +90,18 @@ const checkForWin = () => {
             
             gameWon = true;
             console.log(gameWon)
-            statusMessage.innerHTML = `Winner is ${firstPlayer}`
+            statusMessage.textContent = `The Winner is player ${firstPlayer}!`
             console.log(statusMessage)
             gameRunning = false;
-
+            alert(`Player ${firstPlayer} has won! Play again?`)
              // cant do return because itll exit whole function;
             break;
            }   
         }
         //Draw would have no space 
             if (!startGame.includes('')) {
-             statusMessage.innerHTML = `There is a draw! Play again`
+             statusMessage.textContent = `Restart me!`
+             alert(`There was a draw! Want to play again?`)
              gameRunning = false;
              return;
       } 
@@ -109,14 +112,11 @@ const checkForWin = () => {
 //play around with order not sure how different function locations affect game
 
 
-
-
-
  const clearBoard = () => {
     firstPlayer = 'X'
     startGame = ['', '', '', '', '', '', '', '', ''];
     box.forEach(box => box.innerText = '')
-    statusMessage.innerHTML = `Board is cleared. It is ${firstPlayer}'s turn!`
+    statusMessage.textContent = `Board is cleared. It is ${firstPlayer}'s turn!`
     gameRunning = true;
  }
 
